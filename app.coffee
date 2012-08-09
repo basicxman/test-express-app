@@ -1,4 +1,6 @@
 express    = require("express")
+pg         = require("pg")
+db         = require("./db")
 
 # Require each controller.
 index      = require("./controllers/index")
@@ -18,6 +20,8 @@ app.use (req, res, next) ->
   res.removeHeader("X-Powered-By")
 
   next()
+
+console.log db.production
 
 # Route the index controller
 app.all "/", index.index
